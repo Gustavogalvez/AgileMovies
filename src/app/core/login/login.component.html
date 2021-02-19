@@ -1,0 +1,29 @@
+
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-body">
+        <h1 class="text-center mb-3">AgileMovies</h1>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" [(ngModel)]="user.name" name="name">
+          <button *ngIf="user.name != ''" mat-button matSuffix mat-icon-button aria-label="Username" (click)="user.name=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input #passInput matInput [type]="type" [(ngModel)]="user.password" name="password">
+          <button
+            [color]="type === 'text' ? 'warn':''"
+            mat-button matSuffix mat-icon-button
+            aria-label="Change Password"
+            (click)="type = (type === 'text') ? 'password' : 'text'">
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </mat-form-field>
+        <button class="w-100 mt-3" mat-raised-button color="primary">Ingresar</button>
+			</div>
+		</div>
+	</div>
+</div>
