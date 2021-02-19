@@ -5,5 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class DataSharedService {
 
+  header!: HTMLElement;
+  get heightHeader(): number {
+    return this.header?.clientHeight || 0;
+  }
+
   constructor() { }
 }
