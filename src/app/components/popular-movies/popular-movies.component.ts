@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MoviesService } from 'src/app/services/movies.service';
 
 
@@ -10,7 +11,10 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class PopularMoviesComponent implements OnInit {
   infiniteScroll = false;
 
-  constructor(public moviesService: MoviesService) { }
+  constructor(
+    public moviesService: MoviesService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     setTimeout(() => {

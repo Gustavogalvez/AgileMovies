@@ -5,7 +5,7 @@
       *ngFor="let movie of moviesService.popularMovies"
       >
 
-      <img (error)="movie.url = 'assets/img-not-found.png'" (load)="movie.intersection = {load: true}" [src]="movie.url" [alt]="movie.title">
+      <img class="shadow-custom" (click)="moviesService.clickPicture(movie)" (error)="movie.url = 'assets/img-not-found.png'" (load)="movie.intersection = {load: true}" [src]="movie.url" [alt]="movie.title">
 
     </div>
     <div class="col-12" style="position: relative;">

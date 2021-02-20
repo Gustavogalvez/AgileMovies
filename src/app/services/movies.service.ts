@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Actor } from '../models/actor.model';
 import { Movie } from '../models/movie.model';
 import { User } from '../models/user.model';
 import { ApiUrl } from './api-url';
@@ -19,7 +21,13 @@ export class MoviesService {
   premiereMovies!: Movie[];
   premierePage: number = 1;
 
-  constructor(private http: HttpClient, private dataShared: DataSharedService) { }
+  movieDetail!: Movie;
+
+  constructor(
+    private http: HttpClient,
+    private dataShared: DataSharedService,
+    private router: Router
+    ) { }
 
   users() {
     return this.http.get<{data: User}>(this.URL + '/user/me');
@@ -27,13 +35,21 @@ export class MoviesService {
   getPopularMovies() {
     return this.http.get<{data: Array<Movie>, imageBaseUrl: string}>(this.URL + '/movies/popular?page=' + this.popularPage)
     .pipe(
-      map(data => data.data.map(movie => Object.assign(movie, {url: (data.imageBaseUrl + movie.backdrop_path)})))
+      map(data => data.data.map(
+        movie => Object.assign(
+          movie, {url: (data.imageBaseUrl + movie.backdrop_path), poster_path: (data.imageBaseUrl + movie.poster_path)}
+        )
+      ))
     );
   }
   getPremiereMovies() {
     return this.http.get<{data: Array<Movie>, imageBaseUrl: string}>(this.URL + '/movies/now_playing?page=' + this.premierePage)
     .pipe(
-      map(data => data.data.map(movie => Object.assign(movie, {url: (data.imageBaseUrl + movie.backdrop_path)})))
+      map(data => data.data.map(
+        movie => Object.assign(
+          movie, {url: (data.imageBaseUrl + movie.backdrop_path), poster_path: (data.imageBaseUrl + movie.poster_path)}
+        )
+      ))
     );
   }
 
@@ -55,4 +71,17 @@ export class MoviesService {
       })
     );
   }
+
+  getMovieById(movieId: number) {
+    return this.http.get<{data: Array<Actor>, imageBaseUrl: string}>(this.URL + `/movies/${movieId}/actors`)
+    .pipe(
+      map(data => data.data.map(actor => Object.assign(actor, {url: (data.imageBaseUrl + actor.profile_path)})))
+    );
+  }
+
+  clickPicture(movie: Movie) {
+    this.movieDetail = movie;
+    this.router.navigate(['/movie', movie.id]);
+  }
+
 }

@@ -10,7 +10,15 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item" [ngClass]="{'active': 0 === i}" [attr.carousel-id]="i" *ngFor="let movie of moviesService.premiereMovies; let i=index">
-      <img (error)="movie.url = 'assets/img-not-found.png'" (load)="movie.intersection = {load: true}" [src]="movie.url" class="d-block w-100" [alt]="movie.title">
+
+      <img
+        (click)="moviesService.clickPicture(movie)"
+        (error)="movie.url = 'assets/img-not-found.png'"
+        (load)="movie.intersection = {load: true}"
+        [src]="movie.url"
+        class="d-block w-100 shadow-custom"
+        [alt]="movie.title">
+
       <div class="carousel-caption d-none d-md-block rounded-3 px-2">
         <h5>{{movie.title}}</h5>
         <p>{{movie.overview}}</p>

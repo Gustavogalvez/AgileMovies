@@ -15,7 +15,7 @@
     </ng-container>
 
     <ng-template #lastChild>
-      <div class="d-flex rounded-3 hover-shadow-inset" routerLinkActive="shadow-custom border" [routerLink]="ruta.route">
+      <div class="d-flex rounded-3 hover-shadow-inset" routerLinkActive="material-shadow border" [routerLink]="ruta.route">
         <a (click)="removeRuta(ruta)" mat-list-item class="w-auto p-0 icon-trash" *ngIf="ruta?.canRemove">
           <mat-icon class="ms-auto my-auto text-warning">delete</mat-icon>
         </a>
@@ -33,7 +33,7 @@
   <mat-accordion>
     <mat-expansion-panel #matExpand style="max-width: 15rem;">
       <mat-expansion-panel-header class="p-0 pe-3 bg-light">
-        <div class="d-flex rounded-3 hover-shadow-inset w-100" routerLinkActive="shadow-custom border" [routerLink]="ruta.route">
+        <div class="d-flex rounded-3 hover-shadow-inset w-100" routerLinkActive="material-shadow border" [routerLink]="ruta.route">
           <a (click)="removeRuta(ruta)" mat-list-item class="w-auto p-0 icon-trash" *ngIf="ruta?.canRemove">
             <mat-icon class="ms-auto my-auto text-warning">delete</mat-icon>
           </a>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
 import { MoviesService } from 'src/app/services/movies.service';
 
@@ -12,7 +13,10 @@ export class PremiereMoviesComponent implements OnInit {
   carousel!: Bootstrap.Carousel;
   idInView: number = 0;
 
-  constructor(public moviesService: MoviesService) { }
+  constructor(
+    public moviesService: MoviesService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     let myCarousel = document.querySelector('#myCarousel');
