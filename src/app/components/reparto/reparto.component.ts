@@ -19,7 +19,6 @@ export class RepartoComponent implements OnInit {
   }
 
   onIntersection({ visible }: { visible: boolean }): void {
-    console.log(visible);
     if (visible && (this.actors?.length > this.maxActorImages)) {
       this.maxActorImages = this.maxActorImages+10;
     }

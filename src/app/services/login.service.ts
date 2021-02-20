@@ -19,8 +19,6 @@ export class LoginService {
 
   constructor(private http: HttpClient, private dataShared: DataSharedService, private router: Router) {
     this.loginData = JSON.parse(localStorage.getItem(this.nameKeyStorage) || '');
-    console.log(this.loginData);
-
   }
 
   public isAuthenticated() : Boolean {
