@@ -4,6 +4,9 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>Agile Movies</span>
-    <mat-icon class="ms-auto" aria-hidden="false" aria-label="User">face</mat-icon>
+    <mat-icon class="ms-auto me-2" aria-hidden="false" aria-label="User">face</mat-icon>
+    <button mat-icon-button (click)="loginService.logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
