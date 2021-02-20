@@ -1,4 +1,5 @@
 <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
   <div class="carousel-indicators">
     <ng-container *ngFor="let movie of moviesService.premiereMovies; let i=index">
       <button
@@ -8,8 +9,14 @@
       </button>
     </ng-container>
   </div>
+
   <div class="carousel-inner">
-    <div class="carousel-item" [ngClass]="{'active': 0 === i}" [attr.carousel-id]="i" *ngFor="let movie of moviesService.premiereMovies; let i=index">
+    <div
+      class="carousel-item"
+      [ngClass]="{'active': 0 === i}"
+      [attr.carousel-id]="i"
+      *ngFor="let movie of moviesService.premiereMovies; let i=index">
+
 
       <img
         (click)="moviesService.clickPicture(movie)"
@@ -23,8 +30,12 @@
         <h5>{{movie.title}}</h5>
         <p>{{movie.overview}}</p>
       </div>
+
+
     </div>
   </div>
+
+
   <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"  data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>

@@ -21,14 +21,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = false;
-    this.loginService.logout();
+    this.loginService.logout(); // deslogueo al entrar al login
   }
 
   login() {
     this.loading = true;
     this.loginService.login(this.user).subscribe(
       () => {},
-      () => this.loading = false);
+      () => this.loading = false); // por si ocurre un error, necesito mostrar nuevamente el form
   }
 
 }

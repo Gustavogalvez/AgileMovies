@@ -60,12 +60,17 @@ export class MoviesService {
       this.getPremiereMovies()
     ]).pipe(
       map(data => {
+
+        // reinicio la paginación
         this.popularPage = 1;
+
         if (!this.dataShared.user) {
           this.dataShared.user = data[0].data;
         } else {
           Object.assign(this.dataShared.user, data[0].data);
         }
+
+
         this.popularMovies = data[1];
         this.premiereMovies = data[2];
       })

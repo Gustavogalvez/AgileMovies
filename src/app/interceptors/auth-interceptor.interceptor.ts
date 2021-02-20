@@ -1,5 +1,4 @@
 import {
-  HttpClient,
   HttpErrorResponse,
   HttpEvent, HttpHandler,
 
@@ -26,7 +25,11 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
     return this.loginService.loginData?.payload;
   }
 
-  constructor(private router: Router, private loginService: LoginService, private _snackBar: MatSnackBar, private http: HttpClient) {}
+  constructor(
+    private router: Router, // retornar al login (no tengo conocimiento cuando expiraría el refresh token)
+    private loginService: LoginService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -53,6 +56,10 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
     );
   }
 
+  /*
+    refresh token, se ocupan algunas partes de:
+    https://medium.com/@sajinsatheesan995/refresh-token-interceptor-angular-10-d876d01561be
+  */
   private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
     if (!this.isRefreshing) {
       this.isRefreshing = true;

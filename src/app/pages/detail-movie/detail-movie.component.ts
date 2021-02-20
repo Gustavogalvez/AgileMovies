@@ -25,6 +25,7 @@ export class DetailMovieComponent implements OnInit {
           this.actors = actors;
         });
       } else {
+        // si no poseo el detalle de la película, y ya que no lo puedo obtener desde la api, lo redirecciono al home
         this.router.navigate(['/home']);
       }
     });

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataSharedService } from '../services/data-shared.service';
 
 @Component({
@@ -6,11 +6,6 @@ import { DataSharedService } from '../services/data-shared.service';
   templateUrl: './pages.component.html',
   styleUrls: ['./pages.component.scss']
 })
-export class PagesComponent implements OnInit {
-
+export class PagesComponent {
   constructor(public dataShared: DataSharedService) { }
-
-  ngOnInit(): void {
-  }
-
 }

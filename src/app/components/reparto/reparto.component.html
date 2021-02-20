@@ -1,5 +1,7 @@
 <div class="container" #container>
   <div class="row">
+
+
     <ng-container *ngFor="let actor of actors; let i=index">
 
       <div class="col-6 col-md-4 col-lg-3 col-sm-6 mb-3" *ngIf="i <= maxActorImages">
@@ -17,12 +19,17 @@
       </div>
 
     </ng-container>
+
+
+    <!-- Para detectar si está al final -->
     <div class="col-12" style="position: relative;">
       <div
         inViewport
         (inViewportAction)="onIntersection($event);" class="for-next"></div>
       <hr>
     </div>
+
+
   </div>
 </div>
 

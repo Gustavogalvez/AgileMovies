@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { DataSharedService } from 'src/app/services/data-shared.service';
 import { UtilsService } from 'src/app/services/utils.service';
@@ -8,15 +8,15 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit, AfterViewInit {
+export class SidenavComponent implements AfterViewInit {
   @Input() heightHeader = 0;
 
   @ViewChild('nav') nav!: MatSidenav;
 
-  constructor(public utils: UtilsService, private dataSharedService: DataSharedService) {
-  }
-
-  ngOnInit(): void {}
+  constructor(
+    public utils: UtilsService,
+    private dataSharedService: DataSharedService
+  ) {}
 
   ngAfterViewInit(): void {
     if (this.utils.desktop) {

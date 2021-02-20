@@ -1,7 +1,10 @@
 <div class="container mt-3" *ngIf="movieService.movieDetail">
   <div class="row">
     <div class="col-md-8 mx-auto">
+
       <h1 class="text-center">{{movieService.movieDetail.title}}</h1>
+
+
       <div class="container">
         <div class="row">
 
@@ -29,13 +32,19 @@
             <p style="text-align: justify; font-size: larger;">{{movieService.movieDetail.overview}}</p>
           </div>
 
+
           <hr class="my-3 col-12 order-2">
           <h2 class="order-3">Reparto</h2>
 
 
         </div>
       </div>
-      <app-reparto [actors]="actors"></app-reparto>
+
+
+      <app-reparto [actors]="actors">
+      </app-reparto>
+
+
     </div>
   </div>
 </div>

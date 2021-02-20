@@ -10,7 +10,7 @@
   <h3 class="text-center">
     Películas en Populares
   </h3>
-  <app-popular-movies></app-popular-movies>
+  <app-popular-movies *ngIf="moviesService?.popularMovies"></app-popular-movies>
 </div>
 
 

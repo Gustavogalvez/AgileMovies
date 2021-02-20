@@ -14,6 +14,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   &:hover {
     box-shadow: 0 10px 40px rgb(0 0 0 / 20%);
   }
+  &:active {
+    transform: scale(1.5);
+  }
 }
 
 .for-next {

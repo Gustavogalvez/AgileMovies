@@ -21,6 +21,9 @@ const materialModules = [
 ];
 
 
+/*
+  Modulo de sidenav recursivo exportado de proyecto pasado
+*/
 @NgModule({
   declarations: [SidenavComponent, SideContentComponent],
   imports: [

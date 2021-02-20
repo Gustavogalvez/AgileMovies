@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('container') container!: ElementRef<HTMLDivElement>;
 
-  constructor(private moviesService: MoviesService) { }
+  constructor(public moviesService: MoviesService) { }
 
   ngOnInit(): void {
     setTimeout(() => {

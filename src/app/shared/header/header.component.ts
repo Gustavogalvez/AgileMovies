@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { DataSharedService } from 'src/app/services/data-shared.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   @Input() sidenav!: MatSidenav;
 
@@ -18,9 +18,6 @@ export class HeaderComponent implements OnInit {
     public loginService: LoginService
   ) {
     dataShared.header = el.nativeElement as any;
-  }
-
-  ngOnInit(): void {
   }
 
 }

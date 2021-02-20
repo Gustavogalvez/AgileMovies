@@ -23,8 +23,4 @@ export class RepartoComponent implements OnInit {
       this.maxActorImages = this.maxActorImages+10;
     }
   }
-
-  setTimeoutInfiniteScroll() {
-  }
-
 }

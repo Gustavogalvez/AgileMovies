@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
 import { MoviesService } from 'src/app/services/movies.service';
 
@@ -11,13 +10,15 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class PremiereMoviesComponent implements OnInit {
   carousel!: Bootstrap.Carousel;
+
+  // se usa para controlar el index de la imagen que se está mostrando
   idInView: number = 0;
 
   constructor(
-    public moviesService: MoviesService,
-    private router: Router
+    public moviesService: MoviesService
   ) { }
 
+  // https://getbootstrap.com/docs/5.0/components/carousel
   ngOnInit(): void {
     let myCarousel = document.querySelector('#myCarousel');
     if (myCarousel) {
