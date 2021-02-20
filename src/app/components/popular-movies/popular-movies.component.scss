@@ -1,0 +1,18 @@
+img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+.for-next {
+  position: absolute;
+  width: 100%;
+  padding-top: 60vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.bottom-right-fixed {
+  position: fixed;
+  bottom: 5px;
+  right: 1.5rem;
+}
