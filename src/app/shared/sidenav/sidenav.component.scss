@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  mat-sidenav-container {
+    flex: 1;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+  }
+}
+.shadow-right {
+  box-shadow: 3px 0px 5px 0px rgba(0,0,0,.2) !important;
+}

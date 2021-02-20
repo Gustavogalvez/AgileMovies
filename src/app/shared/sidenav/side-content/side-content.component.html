@@ -1,0 +1,52 @@
+<mat-nav-list>
+  <ng-container
+    [ngTemplateOutlet]="root_comp"
+    [ngTemplateOutletContext]="{ rutas: navServices.menu }">
+  </ng-container>
+</mat-nav-list>
+
+<ng-template #root_comp let-rutas="rutas">
+  <ng-container *ngFor="let ruta of rutas; let i=index">
+
+    <ng-container
+      *ngIf="ruta.childs; else lastChild"
+      [ngTemplateOutlet]="acordion"
+      [ngTemplateOutletContext]="{ ruta: ruta }">
+    </ng-container>
+
+    <ng-template #lastChild>
+      <div class="d-flex rounded-3 hover-shadow-inset" routerLinkActive="shadow-custom border" [routerLink]="ruta.route">
+        <a (click)="removeRuta(ruta)" mat-list-item class="w-auto p-0 icon-trash" *ngIf="ruta?.canRemove">
+          <mat-icon class="ms-auto my-auto text-warning">delete</mat-icon>
+        </a>
+        <a class="to-nav-link shadow-mat" mat-list-item >
+          {{ruta.name}}
+          <mat-icon class="ms-auto" *ngIf="ruta?.icon">{{ruta.icon}}</mat-icon>
+        </a>
+      </div>
+    </ng-template>
+
+  </ng-container>
+</ng-template>
+
+<ng-template #acordion let-ruta="ruta">
+  <mat-accordion>
+    <mat-expansion-panel #matExpand style="max-width: 15rem;">
+      <mat-expansion-panel-header class="p-0 pe-3 bg-light">
+        <div class="d-flex rounded-3 hover-shadow-inset w-100" routerLinkActive="shadow-custom border" [routerLink]="ruta.route">
+          <a (click)="removeRuta(ruta)" mat-list-item class="w-auto p-0 icon-trash" *ngIf="ruta?.canRemove">
+            <mat-icon class="ms-auto my-auto text-warning">delete</mat-icon>
+          </a>
+          <a class="to-nav-link shadow-mat" (click)="onClickHeader(matExpand)" mat-list-item >
+            {{ruta.name}}
+            <mat-icon class="ms-auto" *ngIf="ruta?.icon">{{ruta.icon}}</mat-icon>
+          </a>
+        </div>
+      </mat-expansion-panel-header>
+      <ng-container
+        [ngTemplateOutlet]="root_comp"
+        [ngTemplateOutletContext]="{ rutas: ruta.childs }">
+      </ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-template>

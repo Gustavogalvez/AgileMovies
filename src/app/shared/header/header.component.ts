@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { DataSharedService } from 'src/app/services/data-shared.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { DataSharedService } from 'src/app/services/data-shared.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(dataShared: DataSharedService, el: ElementRef<HeaderComponent>) {
+  @Input() sidenav!: MatSidenav;
+
+  constructor(dataShared: DataSharedService, public el: ElementRef<HeaderComponent>) {
     dataShared.header = el.nativeElement as any;
   }
 
