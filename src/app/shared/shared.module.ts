@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HeaderModule } from './header/header.module';
+import { SidenavModule } from './sidenav/sidenav.module';
 
 
 
@@ -8,10 +9,12 @@ import { HeaderModule } from './header/header.module';
   declarations: [],
   imports: [
     CommonModule,
-    HeaderModule
+    HeaderModule,
+    SidenavModule
   ],
   exports: [
-    HeaderModule
+    HeaderModule,
+    SidenavModule
   ]
 })
 export class SharedModule { }
