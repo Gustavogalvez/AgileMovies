@@ -19,7 +19,7 @@ export class LoginService {
 
   constructor(private http: HttpClient, private dataShared: DataSharedService, private router: Router) {
     // al iniciar obtengo los datos de usuario desde el localstorage
-    this.loginData = JSON.parse(localStorage.getItem(this.nameKeyStorage) || '');
+    this.loginData = JSON.parse(localStorage.getItem(this.nameKeyStorage) || '{}');
   }
 
   public isAuthenticated() : Boolean {
