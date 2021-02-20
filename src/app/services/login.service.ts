@@ -49,11 +49,12 @@ export class LoginService {
 
   refreshToken() {
     return this.http.post(this.URL + '/auth/refresh', {refresh_token: this.loginData.payload.refresh_token})
-    // .pipe(map((resp: any) => {
-    //   this.loginData.user = resp.data.user;
-    //   this.loginData.payload.token = resp.data.payload.token;
-    //   localStorage.setItem(this.nameKeyStorage, JSON.stringify(this.loginData));
-    // }));
+  }
+
+  setLocalStorage(data: any) {
+    this.loginData.user = data.user;
+    this.loginData.payload.token = data.payload.token;
+    localStorage.setItem(this.nameKeyStorage, JSON.stringify(this.loginData));
   }
 
 }

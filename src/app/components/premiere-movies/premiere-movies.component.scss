@@ -1,0 +1,16 @@
+.carousel-caption {
+  background: #ffffffb8;
+  p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+.carousel-control-next, .carousel-control-prev {
+  background: #ffffff10;
+  transition: all 200ms ease-in-out;
+  &:hover {
+    background: #ffffff87;
+  }
+}

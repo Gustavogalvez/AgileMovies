@@ -31,7 +31,7 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     if (this.payLoad?.token) {
-      req = this.addToken(req, this.payLoad.token);
+      req = this.addToken(req);
     }
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
@@ -62,26 +62,30 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
         switchMap((data: any) => {
           console.log(data);
 
+          this.loginService.setLocalStorage(data?.data);
+
           this.isRefreshing = false;
           this.refreshTokenSubject.next(data?.data?.payload.token);
-          return next.handle(this.addToken(request, data?.data?.payload.token));
+          this.loginService.loginData.payload.token = data?.data?.payload.token;
+          return next.handle(this.addToken(request));
         })
       );
     } else {
       return this.refreshTokenSubject.pipe(
         filter((token) => token != null),
         take(1),
-        switchMap((data) => {
-          return next.handle(this.addToken(request, data?.data?.payload.token));
+        switchMap((token) => {
+          this.loginService.loginData.payload.token = token;
+          return next.handle(this.addToken(request));
         })
       );
     }
   }
 
-  private addToken(request: HttpRequest<any>, token: string) {
+  private addToken(request: HttpRequest<any>) {
     return request.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${this.payLoad.token}`,
       },
     });
   }

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row" #container>
+    <div
+      class="col-md-6 col-lg-4 col-lx-3 mb-3"
+      *ngFor="let movie of moviesService.popularMovies"
+      >
+
+      <img (error)="movie.url = 'assets/img-not-found.png'" (load)="movie.intersection = {load: true}" [src]="movie.url" [alt]="movie.title">
+
+    </div>
+    <div class="col-12" style="position: relative;">
+      <div
+        inViewport
+        (inViewportAction)="onIntersection($event);" class="for-next"></div>
+      <hr>
+    </div>
+  </div>
+</div>
+
+<button *ngIf="moviesService.popularPage > 1" (click)="container.scrollIntoView({behavior: 'auto', block: 'start'})" mat-mini-fab color="primary" aria-label="Go Top!" class="bottom-right-fixed">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</button>

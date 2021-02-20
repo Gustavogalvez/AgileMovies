@@ -13,4 +13,9 @@ export class Movie {
   video!: boolean;
   vote_average!: number;
   vote_count!: number;
+  url?: string;
+  intersection!: {
+    visible?: boolean;
+    load?: boolean;
+  }
 }
