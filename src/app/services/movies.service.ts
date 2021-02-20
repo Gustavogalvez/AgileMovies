@@ -50,10 +50,8 @@ export class MoviesService {
         } else {
           Object.assign(this.dataShared.user, data[0].data);
         }
-
         this.popularMovies = data[1];
         this.premiereMovies = data[2];
-        console.log(this.popularMovies, this.premiereMovies, this.dataShared.user);
       })
     );
   }
