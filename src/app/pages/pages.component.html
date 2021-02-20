@@ -1,2 +1,6 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<app-header #header [sidenav]="sidenav.nav" class="fixed-top"></app-header>
+<app-sidenav #sidenav
+  [heightHeader]="dataShared.heightHeader"
+  [style.margin-top.px]="dataShared.heightHeader">
+  <router-outlet></router-outlet>
+</app-sidenav>
