@@ -1,0 +1,38 @@
+<div class="container" #container>
+  <div class="row">
+
+
+    <ng-container *ngFor="let actor of actors; let i=index">
+
+      <div class="col-6 col-md-4 col-lg-3 col-sm-6 mb-3" *ngIf="i <= maxActorImages">
+
+        <div class="material-shadow">
+          <img
+            (error)="actor.url = 'assets/img-not-found.png'"
+            [src]="actor.url"
+            class="d-block w-100"
+            [alt]="actor.character">
+            <h2 class="text-center mb-1">{{actor.character}}</h2>
+            <p class="text-center mb-0">{{actor.original_name}}</p>
+        </div>
+
+      </div>
+
+    </ng-container>
+
+
+    <!-- Para detectar si está al final -->
+    <div class="col-12" style="position: relative;">
+      <div
+        inViewport
+        (inViewportAction)="onIntersection($event);" class="for-next"></div>
+      <hr>
+    </div>
+
+
+  </div>
+</div>
+
+<button *ngIf="maxActorImages > 10" (click)="container.scrollIntoView({behavior: 'auto', block: 'start'})" mat-mini-fab color="primary" aria-label="Go Top!" class="bottom-right-fixed">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</button>

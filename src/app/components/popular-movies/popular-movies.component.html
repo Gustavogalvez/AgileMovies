@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row" #container>
+
+
+    <div
+      class="col-md-6 col-lg-4 col-lx-3 mb-3"
+      *ngFor="let movie of moviesService.popularMovies"
+      >
+
+      <div class="shadow-custom" style="background: #ffffffb8;" (click)="moviesService.clickPicture(movie)">
+
+        <img (error)="movie.url = 'assets/img-not-found.png'" (load)="movie.intersection = {load: true}" [src]="movie.url" [alt]="movie.title">
+
+        <h3 class="px-1 mb-0 mt-1 font-bold">
+          <b>
+            {{movie.title}}
+          </b>
+        </h3>
+        <p class="px-1 line-clamp-5" style="text-align: justify;">{{movie.overview}}</p>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- Para detectar si está al final -->
+    <div class="col-12" style="position: relative;">
+      <div
+        inViewport
+        (inViewportAction)="onIntersection($event);" class="for-next"></div>
+      <hr>
+    </div>
+
+
+  </div>
+</div>
+
+<button *ngIf="moviesService.popularPage > 1" (click)="container.scrollIntoView({behavior: 'auto'})" mat-mini-fab color="primary" aria-label="Go Top!" class="bottom-right-fixed">
+  <mat-icon>keyboard_arrow_up</mat-icon>
+</button>

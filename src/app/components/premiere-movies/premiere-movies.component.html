@@ -1,0 +1,47 @@
+<div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+  <div class="carousel-indicators">
+    <ng-container *ngFor="let movie of moviesService.premiereMovies; let i=index">
+      <button
+        *ngIf="(i <= (idInView + 10)) && (i >= idInView - 10)"
+        type="button" data-bs-target="#myCarousel"
+        [attr.data-bs-slide-to]="i" class="active">
+      </button>
+    </ng-container>
+  </div>
+
+  <div class="carousel-inner">
+    <div
+      class="carousel-item"
+      [ngClass]="{'active': 0 === i}"
+      [attr.carousel-id]="i"
+      *ngFor="let movie of moviesService.premiereMovies; let i=index">
+
+
+      <img
+        (click)="moviesService.clickPicture(movie)"
+        (error)="movie.url = 'assets/img-not-found.png'"
+        (load)="movie.intersection = {load: true}"
+        [src]="movie.url"
+        class="d-block w-100 shadow-custom"
+        [alt]="movie.title">
+
+      <div class="carousel-caption d-none d-md-block rounded-3 px-2">
+        <h5>{{movie.title}}</h5>
+        <p>{{movie.overview}}</p>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

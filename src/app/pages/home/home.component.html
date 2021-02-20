@@ -1,0 +1,16 @@
+<div class="row mt-3" #container>
+  <div class="col-lg-6 col-md-8 mx-auto">
+    <h3 class="text-center">
+      Películas en Estreno
+    </h3>
+    <app-premiere-movies></app-premiere-movies>
+  </div>
+</div>
+<div class="row mt-3">
+  <h3 class="text-center">
+    Películas en Populares
+  </h3>
+  <app-popular-movies *ngIf="moviesService?.popularMovies"></app-popular-movies>
+</div>
+
+
