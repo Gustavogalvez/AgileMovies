@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 
   API_URL: {
-    protocol: 'http',
+    protocol: 'http://',
     suffix: '/api',
     domain: '161.35.140.236:9005'
   }
