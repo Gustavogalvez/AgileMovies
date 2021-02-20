@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 import { Login } from '../models/login.model';
+import { ApiUrl } from './api-url';
 import { DataSharedService } from './data-shared.service';
 
 
@@ -11,19 +11,17 @@ import { DataSharedService } from './data-shared.service';
   providedIn: 'root'
 })
 export class LoginService {
-
-  private get API_URL(): {protocol: string, suffix: string, domain: string} {
-    return environment.API_URL;
-  }
-  get URL(): string {
-    return this.API_URL.protocol + this.API_URL.domain + this.API_URL.suffix;
-  }
+  URL = new ApiUrl().URL;
 
   loginData!: Login;
 
   nameKeyStorage: string = 'loginData:AgileMovies';
 
-  constructor(private http: HttpClient, private dataShared: DataSharedService, private router: Router) { }
+  constructor(private http: HttpClient, private dataShared: DataSharedService, private router: Router) {
+    this.loginData = JSON.parse(localStorage.getItem(this.nameKeyStorage) || '');
+    console.log(this.loginData);
+
+  }
 
   public isAuthenticated() : Boolean {
     let loginData = localStorage.getItem(this.nameKeyStorage);
@@ -47,6 +45,15 @@ export class LoginService {
   logout() {
     localStorage.removeItem(this.nameKeyStorage);
     this.router.navigate(['/login']);
+  }
+
+  refreshToken() {
+    return this.http.post(this.URL + '/auth/refresh', {refresh_token: this.loginData.payload.refresh_token})
+    // .pipe(map((resp: any) => {
+    //   this.loginData.user = resp.data.user;
+    //   this.loginData.payload.token = resp.data.payload.token;
+    //   localStorage.setItem(this.nameKeyStorage, JSON.stringify(this.loginData));
+    // }));
   }
 
 }
