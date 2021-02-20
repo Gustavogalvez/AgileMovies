@@ -9,6 +9,10 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+      },
+      {
+        path: 'movie/:movieId',
+        loadChildren: () => import('./detail-movie/detail-movie.module').then(m => m.DetailMovieModule)
       }
     ]
   }

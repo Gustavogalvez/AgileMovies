@@ -15,6 +15,7 @@ export class NavsService {
 
   constructor() { }
 
+  // lógica para agrega un menú
   addNewMenu(sideNav: SideNav, fatherBoardName?: string): void {
     if (!this.findMenu(sideNav)) {
       if (fatherBoardName) {
@@ -32,12 +33,12 @@ export class NavsService {
   }
 
 
+  // Encuentra un menú
   findMenu(sideNav: SideNav, func?: (sideNav: SideNav, index: number, arraySideNav: SideNav[]) => void): boolean {
     let find = false;
     this.menu.forEach((ruta, index, array) => {
       if (ruta.childs) {
         ruta.childs.forEach((r: { name: any; }, indexChild: number, arrayChild: any[]) => {
-          console.log(r.name, sideNav.name);
           if (r.name === sideNav.name) {
             find = true;
             if (func) {

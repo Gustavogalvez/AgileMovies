@@ -1,0 +1,50 @@
+<div class="container mt-3" *ngIf="movieService.movieDetail">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+
+      <h1 class="text-center">{{movieService.movieDetail.title}}</h1>
+
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-12 mx-auto">
+            <div class="carousel-item active">
+              <img
+                (error)="movieService.movieDetail.url = 'assets/img-not-found.png'"
+                [src]="movieService.movieDetail.poster_path"
+                [alt]="movieService.movieDetail.title">
+            </div>
+          </div>
+
+          <hr class="my-3 col-12">
+
+          <div class="col-md-5 order-1 order-md-0">
+            <img
+              class="float-left"
+              (error)="movieService.movieDetail.url = 'assets/img-not-found.png'"
+              [src]="movieService.movieDetail.url"
+              [alt]="movieService.movieDetail.title">
+          </div>
+
+
+          <div class="col-md-7 order-md-0 order-0">
+            <p style="text-align: justify; font-size: larger;">{{movieService.movieDetail.overview}}</p>
+          </div>
+
+
+          <hr class="my-3 col-12 order-2">
+          <h2 class="order-3">Reparto</h2>
+
+
+        </div>
+      </div>
+
+
+      <app-reparto [actors]="actors">
+      </app-reparto>
+
+
+    </div>
+  </div>
+</div>
