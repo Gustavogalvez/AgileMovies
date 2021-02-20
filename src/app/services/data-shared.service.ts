@@ -16,5 +16,7 @@ export class DataSharedService {
 
   nav!: MatSidenav;
 
+  loading: boolean = false;
+
   constructor() { }
 }

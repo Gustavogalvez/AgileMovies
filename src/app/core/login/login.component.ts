@@ -13,22 +13,22 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
+  loading: boolean = false;
+
   type: 'text' | 'password' = 'password';
 
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loading = false;
     this.loginService.logout();
   }
 
   login() {
-    this.loginService.login(this.user).subscribe(resp => {
-      console.log(resp);
-    });
-  }
-
-  logout() {
-    localStorage.removeItem('')
+    this.loading = true;
+    this.loginService.login(this.user).subscribe(
+      () => {},
+      () => this.loading = false);
   }
 
 }

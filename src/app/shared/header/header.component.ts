@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   @Input() sidenav!: MatSidenav;
 
   constructor(
-    dataShared: DataSharedService,
+    public dataShared: DataSharedService,
     public el: ElementRef<HeaderComponent>,
     public loginService: LoginService
   ) {

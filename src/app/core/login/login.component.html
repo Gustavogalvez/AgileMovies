@@ -1,7 +1,7 @@
 
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
-		<div class="card">
+		<div class="card" [ngClass]="{'loading-card': loading}">
 			<div class="card-body">
         <h1 class="text-center mb-3">AgileMovies</h1>
         <mat-form-field class="w-100" appearance="outline">
